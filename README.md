@@ -12,7 +12,7 @@ Text UI Converter is converter from text-based UI design files to HTML files.
 ## UI Items
 
 1. [[Sample]]: Button. `<input type="button" value="Sample"/>`
-1. [ ] or [Sample]: Input Box. `<input type="text" value="Sample"/>`
+1. `[ ]` or [Sample]: Input Box. `<input type="text" value="Sample"/>`
 1. { }: Check Box. `<input type="checkbox"/>`
 1. {V}: Checked Check Box. `<input type="checkbox" checked/>`
 1. ( ): Radio Button. `<input type="radio"/>`
