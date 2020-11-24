@@ -6,8 +6,21 @@ import re
 import codecs
 from os import path
 
+help = """
+* [[Sample]]: Button. '<input type="button" value="Sample"/>'
+* '[ ]' or [Sample]: Input Box. '<input type="text" value="Sample"/>'
+* { }: Check Box. '<input type="checkbox"/>'
+* {V}: Checked Check Box. '<input type="checkbox" checked/>'
+* ( ): Radio Button. '<input type="radio"/>'
+* (V): Checked Radio Button. '<input type="radio" checked/>'
+* @ @V or @Sample@V: Drop-down List. '<select><option>Sample</option></select>'
+* !Sample!: Table Header Cell. '<th>Sample</th>'
+* |Sample|: Table Cell. '<td>Sample</td>'
+"""
+
 # Defines arguments.
-parser = argparse.ArgumentParser(description='Text UI Converter')
+parser = argparse.ArgumentParser(description='Text UI Converter\n' + help, 
+        formatter_class=argparse.RawTextHelpFormatter)
 parser.add_argument("-o", "--output", help="Output HTML file name.")
 parser.add_argument("-c", "--css", help="Use the css file.")
 parser.add_argument('text_files', nargs='+', help="Text files")
