@@ -16,7 +16,8 @@ help = """
 * @ @V or @Sample@V: Drop-down List. '<select><option>Sample</option></select>'
 * !Sample!: Table Header Cell. '<th>Sample</th>'
 * |Sample|: Table Cell. '<td>Sample</td>'
-* two spaces: <p/>
+* End with two spaces: Line break. '<br/>'
+* Blank line: Paragraph break. '<p/>'
 """
 
 # Defines arguments.
