@@ -1,17 +1,11 @@
-Button: [[Sample]]
-<p/>
-Input box: [ ] or [Sample]
-<p/>
-{ } Check box {V} Checked check box
-<p/>
-( ) Radio button (V) Checked radio button
-<p/>
-Drop-down list: @ @V or @Sample@V
-<p/>
+Button: [[Sample]]  
+Input box: [ ] or [Sample]  
+{ } Check box {V} Checked check box  
+( ) Radio button (V) Checked radio button  
+Drop-down list: @ @V or @Sample@V  
 
 Table: 
 <table border="1">
 ! Title1 ! Title2 !
 | Value1 | Value2 |
 </table>
-

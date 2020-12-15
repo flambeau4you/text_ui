@@ -16,18 +16,22 @@ help = """
 * @ @V or @Sample@V: Drop-down List. '<select><option>Sample</option></select>'
 * !Sample!: Table Header Cell. '<th>Sample</th>'
 * |Sample|: Table Cell. '<td>Sample</td>'
+* two spaces: <p/>
 """
 
 # Defines arguments.
 parser = argparse.ArgumentParser(description='Text UI Converter\n' + help, 
         formatter_class=argparse.RawTextHelpFormatter)
-parser.add_argument("-o", "--output", help="Output HTML file name.")
+parser.add_argument("-f", "--file", help="Output HTML file name.")
 parser.add_argument("-c", "--css", help="Use the css file.")
+parser.add_argument("-p", "--print_output", action='store_true', help="Print output without file")
 parser.add_argument('text_files', nargs='+', help="Text files")
 
 def convert(text):
     if text == '':
         return '<p/>'
+    text = re.sub(r'  $', r'<br/>', text)
+    text = text.strip()
 
     text = re.sub(r'\[\[([^\]]+)\]\]', r'<input type="button" value="\1"/>', text)
     text = re.sub(r'\[ \]', r'<input type="textbox"/>', text)
@@ -52,14 +56,19 @@ def convert(text):
         
     return text
 
-def convert_file(text_file):
+def convert_text(text_file):
     html = ''
-    f = open(text_file)
+    f = open(text_file, 'r', encoding='utf-8', errors='ignore')
     while True:
         line = f.readline()
         if not line: break
-        html += convert(line.strip()) + '\n'
+        html += convert(line) + '\n'
     f.close()
+
+    return html
+
+def convert_text_to_html_file(text_file):
+    html = convert_text(text_file)
 
     if args.css: 
         html = '<link rel="stylesheet" href="' + args.css + '">\n' + html
@@ -79,11 +88,14 @@ def write_file(path, html):
 args = parser.parse_args()
 
 
-if args.output:
-    html = convert_file(args.text_file)
-    write_file(args.output, html)
+if args.file:
+    html = convert_text_to_html_file(args.text_files[0])
+    write_file(args.file, html)
+elif args.print_output:
+    html = convert_text(args.text_files[0])
+    print(html)
 else:
     for text_file in args.text_files:
-        html = convert_file(text_file)
+        html = convert_text_to_html_file(text_file)
         filename, file_extension = path.splitext(text_file)
         write_file(filename + ".html", html)
