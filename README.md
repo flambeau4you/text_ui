@@ -21,7 +21,7 @@ Text UI Converter is converter from text-based UI design files to HTML files.
 1. !Sample!: Table Header Cell. `<th>Sample</th>`
 1. |Sample|: Table Cell. `<td>Sample</td>`
 1. End with two spaces: Line break. `<br/>`
-1. Blank line: Paragraph break. '<p/>'
+1. Blank line: Paragraph break. `<p/>`
 
 ## Run
 
